@@ -1,5 +1,6 @@
 import React from 'react';
 import '../styles/dashboard.css';
+import Chatbot from '../components/chatbot/ChatBot';
 
 const Dashboard = () => {
     const stats = [
@@ -85,6 +86,7 @@ const Dashboard = () => {
                     </div>
                 </section>
             </div>
+            <Chatbot />
         </div>
     );
 };
