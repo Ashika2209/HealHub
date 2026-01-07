@@ -1,0 +1,177 @@
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 32px;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 24px;
+    margin-bottom: 32px;
+}
+
+.stat-card {
+    padding: 24px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.stat-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+}
+
+.icon-blue {
+    background: rgba(59, 130, 246, 0.2);
+}
+
+.icon-purple {
+    background: rgba(168, 85, 247, 0.2);
+}
+
+.icon-green {
+    background: rgba(34, 197, 94, 0.2);
+}
+
+.stat-content h3 {
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 4px;
+}
+
+.stat-content p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.dashboard-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 24px;
+}
+
+@media (max-width: 900px) {
+    .dashboard-content {
+        grid-template-columns: 1fr;
+    }
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 24px 24px 0;
+}
+
+.section-header h2 {
+    font-size: 1.25rem;
+}
+
+.appointments-list {
+    padding: 0 24px 24px;
+}
+
+.appointment-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: var(--radius-md);
+    margin-bottom: 12px;
+    transition: var(--transition);
+}
+
+.appointment-item:hover {
+    background: rgba(255, 255, 255, 0.05);
+    transform: translateX(4px);
+}
+
+.apt-info h4 {
+    margin-bottom: 4px;
+}
+
+.apt-info p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.apt-time {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    text-align: right;
+}
+
+.date-badge {
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.time-badge {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.status-badge {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.status-confirmed {
+    background: rgba(16, 185, 129, 0.2);
+    color: #34d399;
+}
+
+.status-pending {
+    background: rgba(245, 158, 11, 0.2);
+    color: #fbbf24;
+}
+
+.updates-section {
+    padding: 24px;
+}
+
+.updates-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.update-item {
+    display: flex;
+    gap: 12px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.update-item:last-child {
+    border-bottom: none;
+}
+
+.update-icon {
+    font-size: 1.2rem;
+}
+
+.update-text {
+    font-size: 0.9rem;
+    margin-bottom: 4px;
+}
+
+.update-time {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
