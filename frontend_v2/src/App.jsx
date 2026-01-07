@@ -5,6 +5,9 @@ import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import DoctorList from './pages/DoctorList';
 import BookAppointment from './pages/BookAppointment';
+import Profile from './pages/Profile';
+import MyAppointments from './pages/MyAppointments';
+import MedicalRecords from './pages/MedicalRecords';
 import './styles/main.css';
 
 function AppContent() {
@@ -23,6 +26,9 @@ function AppContent() {
             <Route path="/" element={<Dashboard />} />
             <Route path="/doctors" element={<DoctorList />} />
             <Route path="/book" element={<BookAppointment />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/my-appointments" element={<MyAppointments />} />
+            <Route path="/medical-records" element={<MedicalRecords />} />
           </Routes>
         </Layout>
       )}
