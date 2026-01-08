@@ -1,75 +1,162 @@
 import React, { useState } from 'react';
+import './Login.css';
 import { useNavigate } from 'react-router-dom';
-import '../styles/auth.css';
+import { authAPI, saveAuthData } from '../services/api.js';
 
-const Login = () => {
+const roles = [
+    {
+        label: 'Patient',
+        icon: '👤',
+        description: 'Patient Portal - View your medical information and appointments',
+        note: 'New Patient? Contact your healthcare provider or visit the front desk to get registered by an administrator.'
+    },
+    {
+        label: 'Doctor',
+        icon: '🩺',
+        description: 'Medical Professional - Manage patient care and schedules',
+        note: 'Doctor Access: Your account is managed by the system administrator. Contact IT support if you need assistance.'
+    },
+    {
+        label: 'Admin',
+        icon: '⚙️',
+        description: 'Administrator - Manage doctors, patients, and system settings',
+        note: null
+    },
+];
+
+export default function Login({ onLogin }) {
+    const [selectedRole, setSelectedRole] = useState(0);
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
+    const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
-    const [formData, setFormData] = useState({
-        email: '',
-        password: ''
-    });
 
-    const handleChange = (e) => {
-        setFormData({
-            ...formData,
-            [e.target.name]: e.target.value
-        });
-    };
-
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        // Mock login for frontend - navigate to dashboard
-        navigate('/');
+        setError('');
+        setLoading(true);
+
+        const selectedRoleLabel = roles[selectedRole].label.toLowerCase();
+
+        try {
+            const response = await authAPI.login(email, password, selectedRoleLabel);
+
+            if (response.success) {
+                saveAuthData(response.data);
+
+                const normalizedRole = response.data?.user?.role?.toLowerCase() || selectedRoleLabel;
+                localStorage.setItem('userRole', normalizedRole);
+                localStorage.setItem('userEmail', email);
+
+                // Notify parent if prop provided (optional compatibility)
+                if (onLogin) onLogin(roles[selectedRole].label);
+
+                // Navigate based on role
+                if (normalizedRole === 'admin') {
+                    navigate('/admin');
+                } else if (normalizedRole === 'doctor') {
+                    navigate('/doctor');
+                } else {
+                    // Default to home/dashboard for patients
+                    navigate('/');
+                }
+            } else {
+                setError(response.error || 'Invalid credentials');
+            }
+        } catch (error) {
+            console.error('Login error:', error);
+            setError('Login failed. Please check your credentials and try again.');
+        } finally {
+            setLoading(false);
+        }
     };
+
+    const currentRole = roles[selectedRole];
 
     return (
-        <div className="auth-container">
-            <div className="auth-card glass">
-                <div className="auth-header">
-                    <div className="auth-logo">H</div>
-                    <h2>Welcome Back</h2>
-                    <p>Login to your patient portal</p>
+        <div className="unified-login-root">
+            <div className="unified-login-card">
+                {/* Logo & Branding */}
+                <div className="unified-logo-section">
+                    <div className="unified-logo-icon">
+                        <span style={{ fontSize: '2rem' }}>🏥</span>
+                    </div>
+                    <h1 className="unified-brand">HealthCare Pro</h1>
+                    <p className="unified-tagline">Smart Appointment & Patient Management System</p>
                 </div>
 
-                <form onSubmit={handleSubmit} className="auth-form">
-                    <div className="form-group">
-                        <label htmlFor="email">Email Address</label>
+                {/* Role Selection */}
+                <div className="unified-section-title">Select Your Role</div>
+                <div className="unified-role-tabs">
+                    {roles.map((role, idx) => (
+                        <button
+                            key={role.label}
+                            type="button"
+                            className={`unified-role-tab ${idx === selectedRole ? 'active' : ''}`}
+                            onClick={() => setSelectedRole(idx)}
+                        >
+                            <span className="unified-role-icon">{role.icon}</span>
+                            <span className="unified-role-label">{role.label}</span>
+                        </button>
+                    ))}
+                </div>
+
+                <p className="unified-role-desc">{currentRole.description}</p>
+
+                {/* Login Form */}
+                <form className="unified-form" onSubmit={handleSubmit}>
+                    <div className="unified-form-group">
+                        <label className="unified-label">
+                            <span className="unified-input-icon">✉️</span>
+                            Email Address
+                        </label>
                         <input
+                            className="unified-input"
                             type="email"
-                            id="email"
-                            name="email"
-                            placeholder="e.g. john@example.com"
-                            value={formData.email}
-                            onChange={handleChange}
+                            placeholder="Enter your registered email"
+                            value={email}
+                            onChange={e => setEmail(e.target.value)}
                             required
                         />
                     </div>
 
-                    <div className="form-group">
-                        <label htmlFor="password">Password</label>
+                    <div className="unified-form-group">
+                        <label className="unified-label">
+                            <span className="unified-input-icon">🔒</span>
+                            Password
+                        </label>
                         <input
+                            className="unified-input"
                             type="password"
-                            id="password"
-                            name="password"
-                            placeholder="••••••••"
-                            value={formData.password}
-                            onChange={handleChange}
+                            placeholder="Enter your password"
+                            value={password}
+                            onChange={e => setPassword(e.target.value)}
                             required
                         />
                     </div>
 
-                    <button type="submit" className="btn btn-primary btn-block">
-                        Sign In
+                    {error && <div className="unified-error">{error}</div>}
+
+                    <button className="unified-submit-btn" type="submit" disabled={loading}>
+                        {loading ? 'Signing In...' : `Sign In as ${currentRole.label}`}
                     </button>
                 </form>
 
-                <div className="auth-footer">
-                    <p>Don't have an account? <a href="#" className="auth-link">Register</a></p>
-                    <p><a href="#" className="auth-link">Forgot Password?</a></p>
+                {/* Footer Links */}
+                <div className="unified-forgot">
+                    <a href="#">Forgot your password?</a>
                 </div>
+
+                {currentRole.note && (
+                    <div className={`unified-note ${currentRole.label === 'Doctor' ? 'doctor-note' : 'patient-note'}`}>
+                        <strong>{currentRole.label === 'Doctor' ? 'Doctor Access:' : 'New Patient?'}</strong>{' '}
+                        {currentRole.label === 'Doctor'
+                            ? 'Your account is managed by the system administrator. Contact IT support if you need assistance.'
+                            : 'Contact your healthcare provider or visit the front desk to get registered by an administrator.'}
+                    </div>
+                )}
             </div>
         </div>
     );
-};
-
-export default Login;
+}
