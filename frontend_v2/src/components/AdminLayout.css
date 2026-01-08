@@ -1,0 +1,351 @@
+.admin-root {
+    display: flex;
+    min-height: 100vh;
+    background-color: #f8fafc;
+}
+
+.admin-sidebar {
+    width: 260px;
+    background-color: #0f172a;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    position: fixed;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 50;
+}
+
+.admin-logo {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 2.5rem;
+    display: flex;
+    align-items: center;
+    color: #38bdf8;
+}
+
+.admin-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    flex: 1;
+}
+
+.admin-nav-link {
+    display: flex;
+    align-items: center;
+    padding: 0.875rem 1rem;
+    border-radius: 8px;
+    color: #94a3b8;
+    text-decoration: none;
+    transition: all 0.2s;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 0.95rem;
+    text-align: left;
+}
+
+.admin-nav-link:hover {
+    color: white;
+    background-color: rgba(255, 255, 255, 0.05);
+    transform: translateX(4px);
+}
+
+.admin-nav-link.active {
+    background: linear-gradient(90deg, #0ea5e9 0%, #0284c7 100%);
+    color: white;
+    font-weight: 500;
+    box-shadow: 0 4px 12px rgba(14, 165, 233, 0.2);
+}
+
+.admin-sidebar-bottom-fixed {
+    margin-top: auto;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.admin-quick-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.admin-action-btn {
+    width: 100%;
+    padding: 0.75rem;
+    border-radius: 8px;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 0.85rem;
+}
+
+.admin-action-btn.blue {
+    background-color: rgba(56, 189, 248, 0.1);
+    color: #38bdf8;
+    border: 1px solid rgba(56, 189, 248, 0.2);
+}
+
+.admin-action-btn.blue:hover {
+    background-color: rgba(56, 189, 248, 0.2);
+}
+
+.admin-action-btn.green {
+    background-color: rgba(34, 197, 94, 0.1);
+    color: #4ade80;
+    border: 1px solid rgba(34, 197, 94, 0.2);
+}
+
+.admin-action-btn.green:hover {
+    background-color: rgba(34, 197, 94, 0.2);
+}
+
+.admin-sidebar-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 1rem;
+    color: #94a3b8;
+    font-size: 0.85rem;
+}
+
+.logout-btn {
+    background: none;
+    border: none;
+    color: #ef4444;
+    cursor: pointer;
+    font-weight: 500;
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+.logout-btn:hover {
+    background-color: rgba(239, 68, 68, 0.1);
+}
+
+.admin-main {
+    flex: 1;
+    margin-left: 260px;
+    padding: 2rem;
+    max-width: 1600px;
+}
+
+/* Dashboard Cards and General Styles */
+.admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 2rem;
+}
+
+.admin-header h2 {
+    font-size: 1.875rem;
+    color: #0f172a;
+    font-weight: 700;
+    margin: 0;
+}
+
+.admin-header-desc {
+    color: #64748b;
+    margin-top: 0.25rem;
+}
+
+.admin-schedule-btn {
+    background: linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+    transition: transform 0.2s;
+}
+
+.admin-schedule-btn:hover {
+    transform: translateY(-2px);
+}
+
+.admin-cards-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.admin-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    border: 1px solid #f1f5f9;
+}
+
+.admin-card-title {
+    color: #64748b;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.admin-card-value {
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 0.25rem;
+}
+
+.admin-card-desc {
+    color: #0ea5e9;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* Schedule List */
+.admin-schedule {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e2e8f0;
+    overflow: hidden;
+}
+
+.admin-schedule-header {
+    padding: 1.5rem;
+    border-bottom: 1px solid #e2e8f0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.admin-schedule-title {
+    font-weight: 700;
+    color: #1e293b;
+    font-size: 1.1rem;
+}
+
+.admin-schedule-date {
+    background: #f1f5f9;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #64748b;
+}
+
+.admin-schedule-list {
+    padding: 0;
+}
+
+.admin-schedule-item {
+    display: grid;
+    grid-template-columns: 100px 1.5fr 1fr 1fr 100px;
+    /* time patient type doctor status */
+    padding: 1rem 1.5rem;
+    align-items: center;
+    border-bottom: 1px solid #f1f5f9;
+    transition: background 0.1s;
+    font-size: 0.95rem;
+}
+
+.admin-schedule-item:last-child {
+    border-bottom: none;
+}
+
+.admin-schedule-item:hover {
+    background-color: #f8fafc;
+}
+
+.admin-schedule-time {
+    font-weight: 600;
+    color: #0f172a;
+}
+
+.admin-schedule-patient {
+    color: #334155;
+    font-weight: 500;
+}
+
+.admin-schedule-type {
+    color: #64748b;
+}
+
+.admin-schedule-doctor {
+    color: #64748b;
+}
+
+.admin-schedule-status {
+    text-transform: capitalize;
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-align: right;
+}
+
+.admin-schedule-status.scheduled {
+    color: #2563eb;
+}
+
+.admin-schedule-status.completed {
+    color: #16a34a;
+}
+
+.admin-schedule-status.cancelled {
+    color: #dc2626;
+}
+
+.admin-schedule-empty {
+    padding: 4rem 2rem;
+    text-align: center;
+    color: #94a3b8;
+}
+
+.admin-empty-action-btn {
+    margin-top: 1rem;
+    padding: 0.75rem 1.5rem;
+    background: white;
+    border: 2px dashed #cbd5e1;
+    border-radius: 8px;
+    color: #64748b;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.admin-empty-action-btn:hover {
+    border-color: #0ea5e9;
+    color: #0ea5e9;
+    background: #f0f9ff;
+}
+
+@media (max-width: 1024px) {
+    .admin-sidebar {
+        width: 80px;
+        padding: 1rem;
+    }
+
+    .admin-logo,
+    .admin-sidebar-footer span,
+    .admin-quick-actions {
+        display: none;
+    }
+
+    .admin-nav-link {
+        justify-content: center;
+        padding: 0.75rem;
+    }
+
+    .admin-nav-link span {
+        /* Assuming we add icons later */
+    }
+
+    .admin-main {
+        margin-left: 80px;
+    }
+}
