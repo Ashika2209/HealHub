@@ -22,7 +22,8 @@ class Branch(models.Model):
         verbose_name_plural = "Branches"
 
 
-class Doctor(models.Model):
+
+class DoctorProfile(models.Model):
     """
     Represents a Doctor profile using a OneToOne relationship with the User model.
     Linked to a specific Branch.
