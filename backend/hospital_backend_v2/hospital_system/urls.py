@@ -20,4 +20,6 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.core_admin if hasattr(admin.site, 'core_admin') else admin.site.urls), # standard admin
     path('api/accounts/', include('accounts.urls')),
+    path('api/patients/', include('patients.urls')),
+    path('api/doctors/', include('doctors.urls')),
 ]
