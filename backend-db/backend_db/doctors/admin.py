@@ -1,13 +1,13 @@
 from django.contrib import admin
-from .models import Doctor, Branch
+from .models import DoctorProfile, Branch
 
 @admin.register(Branch)
 class BranchAdmin(admin.ModelAdmin):
     list_display = ('name', 'address', 'contact_number')
     search_fields = ('name', 'address')
 
-@admin.register(Doctor)
-class DoctorAdmin(admin.ModelAdmin):
+@admin.register(DoctorProfile)
+class DoctorProfileAdmin(admin.ModelAdmin):
     list_display = ('user', 'check_branch', 'specialization', 'availability_status')
     search_fields = ('user__username', 'user__email', 'specialization')
     list_filter = ('availability_status', 'branch', 'specialization')
