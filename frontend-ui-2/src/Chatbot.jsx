@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 const Chatbot = () => {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState([
     { id: 1, text: "Hello! I am HealBot. How can I help you today?", sender: 'bot' },
     { id: 2, text: "I'd like to book an appointment.", sender: 'user' },

@@ -33,9 +33,21 @@ body {
 .navbar {
   background: white;
   border-bottom: 1px solid var(--border-color);
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   z-index: 100;
+  height: 80px;
+  box-shadow: var(--shadow-sm);
+  /* Added for better visibility boundary */
+}
+
+.main-content {
+  margin-top: 140px;
+  /* Use Margin for strict spacing from fixed header */
+  padding-top: 2rem;
+  min-height: calc(100vh - 140px);
 }
 
 .nav-container {
@@ -413,4 +425,236 @@ body {
 .send-button:disabled {
   background: var(--text-secondary);
   cursor: not-allowed;
+}
+
+/* --- Doctor Dashboard Styles --- */
+.doctor-dashboard {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.dashboard-header {
+  margin-bottom: 2.5rem;
+  border-bottom: 2px solid #f0f4f8;
+  padding-bottom: 1.5rem;
+}
+
+.dashboard-header h1 {
+  color: #1a365d;
+  font-size: 2.5rem;
+  margin: 0;
+}
+
+.specialization {
+  color: #4a5568;
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-top: 0.5rem;
+}
+
+.stat-card.highlight {
+  background: linear-gradient(135deg, #0f766e 0%, #0d9488 100%);
+  color: white;
+  border: none;
+}
+
+.stat-card.highlight .card-icon {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.stat-card.highlight h3,
+.stat-card.highlight p {
+  color: white;
+}
+
+.stat-number {
+  font-size: 3rem;
+  font-weight: 700;
+  margin: 0.5rem 0;
+}
+
+.quick-actions {
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.quick-actions h2 {
+  margin-bottom: 1.5rem;
+  color: #1a365d;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.primary-btn {
+  display: inline-block;
+  /* Ensure proper padding for <a> tags */
+  text-decoration: none;
+  text-align: center;
+}
+
+/* --- Appointment List Styles --- */
+.appointment-page {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.appointment-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  margin-top: 1.5rem;
+}
+
+.appointment-table th {
+  background: #f8fafc;
+  padding: 1.2rem;
+  text-align: left;
+  color: #4a5568;
+  font-weight: 600;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.appointment-table td {
+  padding: 1.2rem;
+  border-bottom: 1px solid #e2e8f0;
+  color: #2d3748;
+}
+
+.patient-link {
+  color: #0f766e;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.status-badge {
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.status-badge.pending {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.status-badge.approved {
+  background: #d4edda;
+  color: #155724;
+}
+
+.status-badge.completed {
+  background: #cce5ff;
+  color: #004085;
+}
+
+.status-badge.cancelled {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+.action-btns {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.action-btns button {
+  padding: 0.4rem 0.8rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.approve-btn {
+  background: #48bb78;
+  color: white;
+}
+
+.complete-btn {
+  background: #4299e1;
+  color: white;
+}
+
+.cancel-btn {
+  background: #f56565;
+  color: white;
+}
+
+.action-btns button:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+/* Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(4px);
+}
+
+.modal-content {
+  background: white;
+  padding: 2.5rem;
+  border-radius: 16px;
+  width: 90%;
+  max-width: 600px;
+  position: relative;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.close-modal {
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+  font-size: 2rem;
+  border: none;
+  background: none;
+  color: #a0aec0;
+  cursor: pointer;
+}
+
+.patient-records h3 {
+  margin-top: 0;
+  color: #1a365d;
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+}
+
+.record-item {
+  border-left: 4px solid #0f766e;
+  background: #f7fafc;
+  padding: 1.2rem;
+  margin-bottom: 1rem;
+  border-radius: 0 8px 8px 0;
+}
+
+.record-item h4 {
+  margin: 0 0 0.5rem 0;
+  color: #2d3748;
+}
+
+.record-item p {
+  margin: 0;
+  color: #4a5568;
 }
