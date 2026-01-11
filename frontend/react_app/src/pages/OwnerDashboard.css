@@ -1,0 +1,124 @@
+.owner-dashboard-root {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.owner-page-header {
+    margin-bottom: 8px;
+}
+
+.owner-welcome {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1a1f37;
+    margin: 0;
+}
+
+.owner-subtitle {
+    color: #64748b;
+    margin-top: 8px;
+}
+
+.owner-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.owner-stats-card {
+    background: white;
+    border-radius: 20px;
+    padding: 32px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    transition: transform 0.3s ease;
+}
+
+.owner-stats-card:hover {
+    transform: translateY(-4px);
+}
+
+.owner-stats-icon {
+    font-size: 2.5rem;
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f8fafc;
+    border-radius: 16px;
+}
+
+.owner-stats-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.owner-stats-value {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #1a1f37;
+}
+
+.owner-stats-label {
+    font-size: 0.875rem;
+    color: #64748b;
+    font-weight: 500;
+    margin-top: 4px;
+}
+
+.owner-promo-banner {
+    background: linear-gradient(135deg, #818cf8 0%, #6366f1 100%);
+    border-radius: 24px;
+    padding: 64px;
+    color: white;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 20px 25px -5px rgba(99, 102, 241, 0.2);
+}
+
+.owner-promo-content {
+    max-width: 600px;
+}
+
+.owner-promo-content h2 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 24px;
+}
+
+.owner-promo-content p {
+    font-size: 1.125rem;
+    line-height: 1.6;
+    opacity: 0.9;
+    margin-bottom: 40px;
+}
+
+.owner-promo-btn {
+    background: white;
+    color: #6366f1;
+    border: none;
+    padding: 16px 32px;
+    border-radius: 100px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.owner-promo-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 1024px) {
+    .owner-stats-grid {
+        grid-template-columns: 1fr;
+    }
+}
