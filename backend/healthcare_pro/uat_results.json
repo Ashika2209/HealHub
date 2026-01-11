@@ -1,0 +1,75 @@
+{
+    "UAT-DATA-01": "PASS",
+    "UAT-DATA-01-DETAILS": {
+        "pass": true,
+        "resp1_status": 201,
+        "resp2_status": 400,
+        "resp2_content": "{\"error\":\"{'email': [ErrorDetail(string='User with this email already exists.', code='invalid')]}\"}"
+    },
+    "UAT-DATA-02": "PASS",
+    "UAT-DATA-02-DETAILS": [
+        {
+            "status": 200,
+            "content": "OK"
+        },
+        {
+            "status": 200,
+            "content": "OK"
+        },
+        {
+            "status": 200,
+            "content": "OK"
+        },
+        {
+            "status": 200,
+            "content": "OK"
+        },
+        {
+            "status": 200,
+            "content": "OK"
+        },
+        {
+            "status": 200,
+            "content": "OK"
+        },
+        {
+            "status": 200,
+            "content": "OK"
+        },
+        {
+            "status": 200,
+            "content": "OK"
+        },
+        {
+            "status": 200,
+            "content": "OK"
+        },
+        {
+            "status": 200,
+            "content": "OK"
+        },
+        {
+            "status": 200,
+            "content": "OK"
+        },
+        {
+            "status": 200,
+            "content": "OK"
+        },
+        {
+            "status": 200,
+            "content": "OK"
+        },
+        {
+            "status": 200,
+            "content": "OK"
+        },
+        {
+            "status": 200,
+            "content": "OK"
+        }
+    ],
+    "UAT-DATA-03": "PASS",
+    "UAT-DATA-03-LATENCY": 4.47,
+    "STATUS": "SUCCESS"
+}
